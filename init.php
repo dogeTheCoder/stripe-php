@@ -153,3 +153,8 @@ require(dirname(__FILE__) . '/lib/OAuthErrorObject.php');
 // Webhooks
 require(dirname(__FILE__) . '/lib/Webhook.php');
 require(dirname(__FILE__) . '/lib/WebhookSignature.php');
+
+// Services
+require(dirname(__FILE__) . '/lib/Service/AbstractService.php');
+require(dirname(__FILE__) . '/lib/Service/CouponService.php');
+require(dirname(__FILE__) . '/lib/Service/PaymentIntentService.php');
