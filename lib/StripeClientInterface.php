@@ -48,7 +48,7 @@ interface StripeClientInterface
      * @param string $method The HTTP method.
      * @param string $path The path of the request.
      * @param array $params The parameters of the request.
-     * @param array|\Stripe\RequestOptions $opts The special modifiers of the request.
+     * @param array|\Stripe\Util\RequestOptions $opts The special modifiers of the request.
      * @return \Stripe\StripeObject The object returned by Stripe's API.
      */
     public function request($method, $path, $params, $opts);
