@@ -25,7 +25,7 @@ class CouponServiceTest extends \Stripe\TestCase
             "/v1/coupons"
         );
         $resources = $this->service->all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\Coupon::class, $resources->data[0]);
     }
 

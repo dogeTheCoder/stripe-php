@@ -19,30 +19,27 @@ class AbstractServiceTest extends \Stripe\TestCase
         $this->service = new \Stripe\Service\CouponService($this->client);
     }
 
-    /**
-     * @expectedException \Stripe\Exception\InvalidArgumentException
-     * @expectedExceptionMessage The resource ID cannot be null or whitespace.
-     */
     public function testRetrieveThrowsIfIdNullIsNull()
     {
+        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('The resource ID cannot be null or whitespace.');
+
         $this->service->retrieve(null);
     }
 
-    /**
-     * @expectedException \Stripe\Exception\InvalidArgumentException
-     * @expectedExceptionMessage The resource ID cannot be null or whitespace.
-     */
     public function testRetrieveThrowsIfIdNullIsEmpty()
     {
+        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('The resource ID cannot be null or whitespace.');
+
         $this->service->retrieve("");
     }
 
-    /**
-     * @expectedException \Stripe\Exception\InvalidArgumentException
-     * @expectedExceptionMessage The resource ID cannot be null or whitespace.
-     */
     public function testRetrieveThrowsIfIdNullIsWhitespace()
     {
+        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('The resource ID cannot be null or whitespace.');
+
         $this->service->retrieve(" ");
     }
 }

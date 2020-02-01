@@ -11,21 +11,19 @@ class StripeClientTest extends TestCase
         $this->assertNull($client->getApiKey());
     }
 
-    /**
-     * @expectedException \Stripe\Exception\InvalidArgumentException
-     * @expectedExceptionMessage API key cannot be the empty string.
-     */
     public function testCtorThrowsIfApiKeyIsEmpty()
     {
+        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('API key cannot be the empty string.');
+
         $client = new StripeClient("");
     }
 
-    /**
-     * @expectedException \Stripe\Exception\InvalidArgumentException
-     * @expectedExceptionMessage API key cannot contain whitespace.
-     */
     public function testCtorThrowsIfApiKeyContainsWhitespace()
     {
+        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('API key cannot contain whitespace.');
+
         $client = new StripeClient("sk_test_123\n");
     }
 
@@ -50,12 +48,11 @@ class StripeClientTest extends TestCase
         $this->assertEquals("sk_test_opts", $optsReflector->getValue($charge)->apiKey);
     }
 
-    /**
-     * @expectedException Stripe\Exception\AuthenticationException
-     * @expectedExceptionMessage No API key provided.
-     */
     public function testRequestThrowsIfNoApiKeyInClientAndOpts()
     {
+        $this->expectException(\Stripe\Exception\AuthenticationException::class);
+        $this->expectExceptionMessage('No API key provided.');
+
         $client = new StripeClient(null, null, MOCK_URL);
         $charge = $client->request("get", "/v1/charges/ch_123", [], []);
         $this->assertNotNull($charge);

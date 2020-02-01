@@ -25,7 +25,7 @@ class CardServiceTest extends \Stripe\TestCase
             "/v1/issuing/cards"
         );
         $resources = $this->service->all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\Issuing\Card::class, $resources->data[0]);
     }
 

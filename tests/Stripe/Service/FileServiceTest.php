@@ -25,7 +25,7 @@ class FileServiceTest extends \Stripe\TestCase
             "/v1/files"
         );
         $resources = $this->service->all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\File::class, $resources->data[0]);
     }
 

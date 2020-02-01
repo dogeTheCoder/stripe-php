@@ -25,7 +25,7 @@ class PaymentIntentServiceTest extends \Stripe\TestCase
             "/v1/payment_intents"
         );
         $resources = $this->service->all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\PaymentIntent::class, $resources->data[0]);
     }
 

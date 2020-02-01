@@ -28,7 +28,7 @@ class CustomerServiceTest extends \Stripe\TestCase
             "/v1/customers"
         );
         $resources = $this->service->all();
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\Customer::class, $resources->data[0]);
     }
 
@@ -39,7 +39,7 @@ class CustomerServiceTest extends \Stripe\TestCase
             "/v1/customers/" . self::TEST_RESOURCE_ID . "/balance_transactions"
         );
         $resources = $this->service->allBalanceTransactions(self::TEST_RESOURCE_ID);
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\CustomerBalanceTransaction::class, $resources->data[0]);
     }
 
@@ -50,7 +50,7 @@ class CustomerServiceTest extends \Stripe\TestCase
             "/v1/customers/" . self::TEST_RESOURCE_ID . "/sources"
         );
         $resources = $this->service->allSources(self::TEST_RESOURCE_ID);
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
     }
 
     public function testAllTaxIds()
@@ -60,7 +60,7 @@ class CustomerServiceTest extends \Stripe\TestCase
             "/v1/customers/" . self::TEST_RESOURCE_ID . "/tax_ids"
         );
         $resources = $this->service->allTaxIds(self::TEST_RESOURCE_ID);
-        $this->assertTrue(is_array($resources->data));
+        $this->assertInternalType('array', $resources->data);
         $this->assertInstanceOf(\Stripe\TaxId::class, $resources->data[0]);
     }
 
@@ -119,7 +119,7 @@ class CustomerServiceTest extends \Stripe\TestCase
         $this->assertInstanceOf(\Stripe\Customer::class, $resource);
     }
 
-    public function testDiscount()
+    public function testDeleteDiscount()
     {
         $this->expectsRequest(
             "delete",
